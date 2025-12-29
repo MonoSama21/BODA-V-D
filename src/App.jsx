@@ -184,7 +184,7 @@ function RSVPForm() {
 
     try {
       // Google Sheets Integration
-      const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1ox9SsSaSsBvN2NEliMWR37YrJXv5UHCgkrj76fEUvlU/edit?usp=sharing'; // Reemplazar con la URL del Web App de Google Sheets
+      const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyEtdHRCOr0p98QpIU3-9pq43TryAR8Q4o_2DIuOxCcn44RpI8y3w1SeoLcL1gtCXBYEQ/exec'; // Reemplazar con la URL del Web App de Google Sheets
       
       // Si no asiste, no enviar el número de invitados
       const dataToSend = {
@@ -212,10 +212,10 @@ function RSVPForm() {
       const emailjs = await import('emailjs-com');
       
       await emailjs.send(
-        'TU_SERVICE_ID', // Reemplazar con tu Service ID de EmailJS
-        'TU_TEMPLATE_ID', // Reemplazar con tu Template ID de EmailJS
+        'service_h5dcy29', // Reemplazar con tu Service ID de EmailJS
+        'template_tmhkmee', // Reemplazar con tu Template ID de EmailJS
         {
-          to_email: 'correo_del_novio@ejemplo.com', // Reemplazar con el correo del novio
+          to_email: 'yrvin21pachas2004@gmail.com', // Reemplazar con el correo del novio
           from_name: formData.name,
           from_email: formData.email,
           phone: formData.phone,
@@ -224,7 +224,7 @@ function RSVPForm() {
           song: formData.song || 'No especificó canción',
           message: formData.message || 'Sin mensaje adicional'
         },
-        'TU_PUBLIC_KEY' // Reemplazar con tu Public Key de EmailJS
+        't3qRuYEW-95qxftoa' // Reemplazar con tu Public Key de EmailJS
       );
 
       setStatus('¡Gracias! Tu confirmación ha sido enviada correctamente.');
