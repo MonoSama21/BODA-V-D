@@ -30,13 +30,13 @@ function Countdown({ targetDate }) {
   }, [targetDate]);
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-8 max-w-5xl mx-auto">
       {Object.entries(timeLeft).map(([unit, value]) => (
-        <div key={unit} className="relative bg-gradient-to-br from-white to-wedding-light/50 backdrop-blur-sm rounded-2xl p-6 shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-wedding-primary/30 border border-wedding-primary/10">
-          <div className="absolute inset-0 bg-gradient-to-br from-wedding-primary/5 to-transparent rounded-2xl"></div>
-          <div className="relative">
-            <div className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-wedding-primary to-wedding-secondary bg-clip-text text-transparent">{value}</div>
-            <div className="text-xs md:text-sm text-gray-600 uppercase tracking-wider mt-3 font-medium">
+        <div key={unit} className="relative group">
+          <div className="absolute inset-0 bg-gradient-to-br from-wedding-primary to-wedding-secondary rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-300"></div>
+          <div className="relative bg-gradient-to-br from-white via-wedding-light/30 to-white backdrop-blur-sm rounded-3xl p-8 shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-wedding-primary/40 border-2 border-wedding-primary/20 hover:border-wedding-primary/40">
+            <div className="text-6xl md:text-7xl font-bold bg-gradient-to-r from-wedding-primary via-wedding-secondary to-wedding-primary bg-clip-text text-transparent drop-shadow-sm">{value}</div>
+            <div className="text-xs md:text-sm text-gray-600 uppercase tracking-widest mt-4 font-semibold">
               {unit === 'days' ? 'Días' : unit === 'hours' ? 'Horas' : unit === 'minutes' ? 'Minutos' : 'Segundos'}
             </div>
           </div>
@@ -253,8 +253,8 @@ function RSVPForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-2xl mx-auto bg-white rounded-lg shadow-xl p-8">
-      <div className="space-y-6">
+    <form onSubmit={handleSubmit} className="max-w-3xl mx-auto bg-gradient-to-br from-white to-wedding-light/30 rounded-3xl shadow-2xl p-10 border-2 border-wedding-primary/20">
+      <div className="space-y-7">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
             Nombre Completo *
@@ -266,7 +266,7 @@ function RSVPForm() {
             required
             value={formData.name}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-wedding-primary focus:border-transparent transition"
+            className="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-wedding-primary focus:border-wedding-primary transition-all duration-300 bg-white/80 backdrop-blur-sm hover:border-wedding-primary/50"
             placeholder="Tu nombre completo"
           />
         </div>
@@ -283,7 +283,7 @@ function RSVPForm() {
               required
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-wedding-primary focus:border-transparent transition"
+              className="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-wedding-primary focus:border-wedding-primary transition-all duration-300 bg-white/80 backdrop-blur-sm hover:border-wedding-primary/50"
               placeholder="tu@email.com"
             />
           </div>
@@ -298,7 +298,7 @@ function RSVPForm() {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-wedding-primary focus:border-transparent transition"
+              className="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-wedding-primary focus:border-wedding-primary transition-all duration-300 bg-white/80 backdrop-blur-sm hover:border-wedding-primary/50"
               placeholder="+52 123 456 7890"
             />
           </div>
@@ -315,7 +315,7 @@ function RSVPForm() {
               required
               value={formData.attending}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-wedding-primary focus:border-transparent transition"
+              className="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-wedding-primary focus:border-wedding-primary transition-all duration-300 bg-white/80 backdrop-blur-sm hover:border-wedding-primary/50 cursor-pointer"
             >
               <option value="yes">Sí, asistiré</option>
               <option value="no">No podré asistir</option>
@@ -333,8 +333,8 @@ function RSVPForm() {
               disabled={formData.attending === 'no'}
               value={formData.guests}
               onChange={handleChange}
-              className={`w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-wedding-primary focus:border-transparent transition ${
-                formData.attending === 'no' ? 'bg-gray-100 cursor-not-allowed opacity-60' : ''
+              className={`w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-wedding-primary focus:border-wedding-primary transition-all duration-300 backdrop-blur-sm hover:border-wedding-primary/50 cursor-pointer ${
+                formData.attending === 'no' ? 'bg-gray-100 cursor-not-allowed opacity-60' : 'bg-white/80'
               }`}
             >
               {[1, 2, 3, 4, 5].map(num => (
@@ -354,7 +354,7 @@ function RSVPForm() {
             name="song"
             value={formData.song}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-wedding-primary focus:border-transparent transition"
+            className="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-wedding-primary focus:border-wedding-primary transition-all duration-300 bg-white/80 backdrop-blur-sm hover:border-wedding-primary/50"
             placeholder="Ej: Perfect - Ed Sheeran"
           />
           <p className="text-sm text-gray-500 mt-1">¡Ayuda a crear la playlist perfecta para la fiesta!</p>
@@ -370,7 +370,7 @@ function RSVPForm() {
             rows="4"
             value={formData.message}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-wedding-primary focus:border-transparent transition"
+            className="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-wedding-primary focus:border-wedding-primary transition-all duration-300 bg-white/80 backdrop-blur-sm hover:border-wedding-primary/50 resize-none"
             placeholder="Déjanos un mensaje..."
           />
         </div>
@@ -378,7 +378,7 @@ function RSVPForm() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-wedding-primary hover:bg-wedding-secondary text-white font-semibold py-4 px-6 rounded-lg transition-colors transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+          className="w-full bg-gradient-to-r from-wedding-primary via-wedding-secondary to-wedding-primary hover:from-wedding-secondary hover:via-wedding-primary hover:to-wedding-secondary text-white font-bold text-lg py-5 px-8 rounded-xl transition-all duration-500 transform hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-xl hover:shadow-2xl hover:shadow-wedding-primary/50"
         >
           {loading ? 'Enviando...' : 'Confirmar Asistencia'}
         </button>
@@ -427,9 +427,11 @@ function HeroSection() {
           <Heart className="relative w-20 h-20 mx-auto text-wedding-primary animate-bounce drop-shadow-2xl" />
         </div>
         
-        <h1 className="font-script text-7xl md:text-9xl bg-gradient-to-r from-wedding-primary via-wedding-secondary to-wedding-primary bg-clip-text text-transparent mb-6 drop-shadow-lg animate-fade-in">
-          Vivian & Diter
-        </h1>
+        <div className="mb-6 px-4">
+          <h1 className="font-script text-6xl sm:text-7xl md:text-8xl lg:text-9xl bg-gradient-to-r from-wedding-primary via-wedding-secondary to-wedding-primary bg-clip-text text-transparent drop-shadow-lg animate-fade-in leading-tight py-4">
+            Vivian & Diter
+          </h1>
+        </div>
         
         <div className="inline-block bg-white/40 backdrop-blur-sm rounded-2xl px-8 py-4 mb-6 shadow-xl border border-wedding-primary/20">
           <p className="text-2xl md:text-3xl text-gray-700 font-serif">Nos casamos</p>
@@ -453,11 +455,7 @@ function HeroSection() {
         </div>
       </div>
 
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-wedding-primary rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-wedding-primary rounded-full mt-2 animate-pulse"></div>
-        </div>
-      </div>
+
     </section>
   );
 }
@@ -487,7 +485,7 @@ function MusicPlayer() {
   };
 
   return (
-    <div className="mt-8 flex flex-col items-center gap-4">
+    <div className="mt-10 flex flex-col items-center gap-5">
       <audio
         ref={audioRef}
         src="/wedding-song.mp3"
@@ -495,36 +493,23 @@ function MusicPlayer() {
         onEnded={() => setIsPlaying(false)}
       />
       
-      <div className="bg-white/80 backdrop-blur-md rounded-full shadow-2xl p-2 border-2 border-wedding-primary/20">
+      <div className="bg-gradient-to-br from-white/90 to-white/70 backdrop-blur-md rounded-full shadow-2xl p-3 border-4 border-wedding-primary/30 hover:border-wedding-primary/50 transition-all duration-300">
         <button
           onClick={togglePlay}
-          className="group relative bg-gradient-to-br from-wedding-primary to-wedding-secondary hover:from-wedding-secondary hover:to-wedding-primary text-white rounded-full p-6 transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-2xl"
+          className="group relative bg-gradient-to-br from-wedding-primary via-wedding-secondary to-wedding-primary hover:from-wedding-secondary hover:via-wedding-primary hover:to-wedding-secondary text-white rounded-full p-7 transition-all duration-500 transform hover:scale-110 shadow-2xl hover:shadow-wedding-primary/50 active:scale-95"
           aria-label={isPlaying ? 'Pausar música' : 'Reproducir música'}
         >
           {isPlaying ? (
-            <Pause className="w-8 h-8 animate-pulse" />
+            <Pause className="w-9 h-9 animate-pulse" />
           ) : (
-            <Play className="w-8 h-8 ml-1" />
+            <Play className="w-9 h-9 ml-1" />
           )}
-          <div className="absolute inset-0 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="absolute inset-0 rounded-full bg-white/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse"></div>
         </button>
       </div>
       
-      <div className="flex items-center gap-3 bg-white/60 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg">
-        <Volume2 className="w-5 h-5 text-wedding-primary" />
-        <input
-          type="range"
-          min="0"
-          max="1"
-          step="0.1"
-          value={volume}
-          onChange={handleVolumeChange}
-          className="w-24 accent-wedding-primary"
-          aria-label="Control de volumen"
-        />
-      </div>
       
-      <p className="text-sm text-gray-600 italic font-serif">
+      <p className="text-sm md:text-base text-gray-700 italic font-serif bg-white/50 backdrop-blur-sm px-6 py-2 rounded-full shadow-md">
         {isPlaying ? '♪ Nuestra canción especial ♪' : 'Haz clic para escuchar nuestra canción'}
       </p>
     </div>
@@ -562,15 +547,16 @@ function EventDetailsSection() {
       <div className="container mx-auto px-4">
         <h2 className="text-4xl md:text-5xl font-serif text-center text-wedding-dark mb-16">Detalles del Evento</h2>
         
-        <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto">
           {/* Ceremonia */}
-          <div className="group relative bg-gradient-to-br from-wedding-light to-white p-10 rounded-2xl shadow-2xl border-2 border-wedding-primary/30 hover:border-wedding-primary/50 transition-all duration-300 hover:scale-105 hover:shadow-wedding-primary/20">
-            <div className="absolute inset-0 bg-gradient-to-br from-wedding-primary/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div className="text-center relative">
-              <div className="w-20 h-20 bg-gradient-to-br from-wedding-primary to-wedding-secondary rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                <Church className="w-10 h-10 text-white" />
+          <div className="group relative bg-gradient-to-br from-wedding-light via-white to-wedding-light/50 p-12 rounded-3xl shadow-2xl border-2 border-wedding-primary/30 hover:border-wedding-primary/60 transition-all duration-500 hover:scale-105 hover:shadow-wedding-primary/30 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-wedding-primary/5 via-transparent to-wedding-secondary/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute top-0 right-0 w-32 h-32 bg-wedding-primary/10 rounded-full blur-3xl"></div>
+            <div className="text-center relative z-10">
+              <div className="w-24 h-24 bg-gradient-to-br from-wedding-primary to-wedding-secondary rounded-full flex items-center justify-center mx-auto mb-8 shadow-2xl group-hover:scale-110 transition-transform duration-500 ring-4 ring-white">
+                <Church className="w-12 h-12 text-white" />
               </div>
-              <h3 className="text-3xl font-serif text-wedding-dark mb-6 font-bold">Ceremonia</h3>
+              <h3 className="text-4xl font-serif text-wedding-dark mb-8 font-bold">Ceremonia</h3>
               <div className="space-y-3 text-gray-700">
                 <p className="flex items-center justify-center gap-2">
                   <Clock className="w-5 h-5 text-wedding-primary" />
@@ -589,13 +575,14 @@ function EventDetailsSection() {
           </div>
 
           {/* Recepción */}
-          <div className="group relative bg-gradient-to-br from-wedding-light to-white p-10 rounded-2xl shadow-2xl border-2 border-wedding-primary/30 hover:border-wedding-primary/50 transition-all duration-300 hover:scale-105 hover:shadow-wedding-primary/20">
-            <div className="absolute inset-0 bg-gradient-to-br from-wedding-primary/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div className="text-center relative">
-              <div className="w-20 h-20 bg-gradient-to-br from-wedding-primary to-wedding-secondary rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                <Users className="w-10 h-10 text-white" />
+          <div className="group relative bg-gradient-to-br from-wedding-light via-white to-wedding-light/50 p-12 rounded-3xl shadow-2xl border-2 border-wedding-primary/30 hover:border-wedding-primary/60 transition-all duration-500 hover:scale-105 hover:shadow-wedding-primary/30 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-wedding-primary/5 via-transparent to-wedding-secondary/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute top-0 left-0 w-32 h-32 bg-wedding-secondary/10 rounded-full blur-3xl"></div>
+            <div className="text-center relative z-10">
+              <div className="w-24 h-24 bg-gradient-to-br from-wedding-primary to-wedding-secondary rounded-full flex items-center justify-center mx-auto mb-8 shadow-2xl group-hover:scale-110 transition-transform duration-500 ring-4 ring-white">
+                <Users className="w-12 h-12 text-white" />
               </div>
-              <h3 className="text-3xl font-serif text-wedding-dark mb-6 font-bold">Recepción</h3>
+              <h3 className="text-4xl font-serif text-wedding-dark mb-8 font-bold">Recepción</h3>
               <div className="space-y-3 text-gray-700">
                 <p className="flex items-center justify-center gap-2">
                   <Clock className="w-5 h-5 text-wedding-primary" />
